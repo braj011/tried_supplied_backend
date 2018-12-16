@@ -34,7 +34,7 @@ e3spr = SupplierProduce.create(supplier_id: 3, produce_id: 5, season: "Spring")
 
 a4win = SupplierProduce.create(supplier_id: 4, produce_id: 1, season: "Winter")
 b4aut = SupplierProduce.create(supplier_id: 4, produce_id: 2, season: "Autumn")
-e4spr = SupplierProduce.create(supplier_id: 4, produce_id: 5, season: "Spring")
+d4spr = SupplierProduce.create(supplier_id: 4, produce_id: 4, season: "Spring")
 
 
 

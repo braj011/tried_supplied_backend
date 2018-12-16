@@ -5,7 +5,18 @@ class SupplierProducesController < ApplicationController
   # GET /supplier_produces.json
   def index
     @supplier_produces = SupplierProduce.all
+    # byebug
+    render json:   @supplier_produces
+    # { supplier: @supplier_produces.suppliers, produce: @supplier_produces.produces, season: @supplier_produces.season  }
   end
+
+  def show_produce_by_season
+    @supplier_produces = SupplierProduce.where(season: params[:season])
+    @produce = Produce.find(@supplier_produces.map {|supp_prod| supp_prod.produce_id })
+    # byebug
+    @supplier = Supplier.find(@supplier_produces.map {|supp_prod| supp_prod.supplier_id })
+    render json: [@produce, @supplier, @supplier_produces]
+  end 
 
   # GET /supplier_produces/1
   # GET /supplier_produces/1.json
@@ -61,14 +72,15 @@ class SupplierProducesController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_supplier_produce
-      @supplier_produce = SupplierProduce.find(params[:id])
-    end
+#   private
+#     # Use callbacks to share common setup or constraints between actions.
+#     def set_supplier_produce
+#       @supplier_produce = SupplierProduce.find(params[:id])
+#     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def supplier_produce_params
-      params.fetch(:supplier_produce, {})
-    end
+#     # Never trust parameters from the scary internet, only allow the white list through.
+#     def supplier_produce_params
+#       params.fetch(:supplier_produce, {})
+#     end
+
 end

@@ -5,6 +5,7 @@ class ProducesController < ApplicationController
   # GET /produces.json
   def index
     @produces = Produce.all
+    render json: @produces
   end
 
   # GET /produces/1
